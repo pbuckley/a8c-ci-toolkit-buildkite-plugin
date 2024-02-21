@@ -26,9 +26,9 @@ CACHE_KEY="${BUILDKITE_PIPELINE_SLUG}-spm-cache-${PACKAGE_RESOLVED_HASH}"
 
 # Restore SPM cache if it's available
 mkdir -p "$SPM_CACHE_LOCATION"
-cd "$SPM_CACHE_LOCATION"
-restore_cache "$CACHE_KEY"
-cd -
+#PB cd "$SPM_CACHE_LOCATION"
+#PB restore_cache "$CACHE_KEY"
+#PB cd -
 
 # This will let Xcode use the system SSH config for downloading packages
 sudo defaults write com.apple.dt.Xcode IDEPackageSupportUseBuiltinSCM YES
@@ -60,6 +60,6 @@ rm -rf "$SPM_CACHE_LOCATION/checkouts" "$SPM_CACHE_LOCATION/artifacts"
 
 # If this is the first time we've seen this particular cache key, save it for the future
 echo "	Saving SPM Cache"
-save_cache "$SPM_CACHE_LOCATION" "$CACHE_KEY" false --use_relative_path_in_tar
+#PB save_cache "$SPM_CACHE_LOCATION" "$CACHE_KEY" false --use_relative_path_in_tar
 
 
